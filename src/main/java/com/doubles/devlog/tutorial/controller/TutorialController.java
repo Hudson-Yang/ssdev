@@ -7,28 +7,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.doubles.devlog.article.domain.ArticleVO;
-import com.doubles.devlog.article.persistence.ArticleDAO;
+import com.doubles.devlog.HomeController;
 import com.doubles.devlog.tutorial.vo.ProductVO;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
-public class HomeController {
-
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+@RequestMapping(value="/tutorial")
+public class TutorialController {
 	
-	@RequestMapping(value = "/")
-	public String home(Model model) throws Exception {
-		model.addAttribute("getit","더블에스 블로그 보고 공부하는 프로젝트");
-		logger.info("home() called");
-		return "home";
-	}
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@GetMapping(value = "/voidm")
 	public void voidMapping() {
@@ -76,6 +65,4 @@ public class HomeController {
 		return productVO;
 		
 	}
-	
-	
 }
