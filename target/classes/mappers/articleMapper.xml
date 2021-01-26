@@ -7,21 +7,23 @@
 	namespace="com.doubles.devlog.mappers.article.ArticleMapper">
 
 	<insert id="create">
-		
+
 		INSERT INTO tbl_article (
 		article_no
 		, title
 		, content
 		, writer
 		, viewcnt
-		) VALUES (
+		)
+		VALUES (
 		#{articleNo}
 		, #{title}
 		, #{content}
 		, #{writer}
 		, #{viewCnt}
 		)
-		<selectKey keyProperty="articleNo" resultType="integer" order="AFTER">
+		<selectKey keyProperty="articleNo" resultType="integer"
+			order="AFTER">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>
@@ -31,7 +33,8 @@
 		article_no
 		, title
 		, content
-		, writer
+		,
+		writer
 		, regdate
 		, viewcnt
 		FROM
@@ -43,14 +46,16 @@
 		UPDATE tbl_article
 		SET
 		title = #{title}
-		, content = #{content}
+		, content =
+		#{content}
 		WHERE
 		article_no = #{articleNo}
 	</update>
 
 	<delete id="delete">
 		DELETE FROM tbl_article
-		WHERE article_no = #{articleNo}
+		WHERE article_no =
+		#{articleNo}
 	</delete>
 
 	<select id="listAll" resultType="ArticleVO">
@@ -66,6 +71,47 @@
         WHERE article_no > 0
         ORDER BY article_no DESC, regdate DESC
         ]]>
+	</select>
+
+	<select id="listPaging" resultMap="ArticleResultMap">
+   		<![CDATA[
+   		SELECT
+        	article_no,
+        	title,
+        	content,
+        	writer,
+        	regdate,
+        	viewcnt
+    	FROM tbl_article
+    	WHERE article_no > 0
+    	ORDER BY article_no DESC, regdate DESC
+    	LIMIT #{page}, 10
+    	]]>
+	</select>
+
+	<select id="listCriteria" resultMap="ArticleResultMap">
+    	<![CDATA[
+    	SELECT
+        	article_no,
+        	title,
+        	content,
+        	writer,
+        	regdate,
+        	viewcnt
+    	FROM tbl_article
+    	WHERE article_no > 0
+    	ORDER BY article_no DESC, regdate DESC
+    	LIMIT #{pageStart}, #{perPageNum}
+    	]]>
+	</select>
+
+	<select id="countArticles" resultType="int">
+    	<![CDATA[
+    	SELECT
+        	COUNT(article_no)
+    	FROM tbl_article
+    	WHERE article_no > 0
+    	]]>
 	</select>
 
 	<resultMap id="ArticleResultMap" type="ArticleVO">

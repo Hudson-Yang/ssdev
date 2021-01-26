@@ -14,6 +14,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.doubles.devlog.article.domain.ArticleVO;
 import com.doubles.devlog.article.service.ArticleService;
+import com.doubles.devlog.commons.paging.Criteria;
+import com.doubles.devlog.commons.paging.PageMaker;
 
 @Controller
 @RequestMapping("/article")
@@ -99,6 +101,21 @@ public class ArticleController {
         redirectAttributes.addFlashAttribute("msg", "delSuccess");
 
         return "redirect:/article/list";
+    }
+    
+    // 페이징
+    @GetMapping(value = "/listPaging")
+    public String listPaging(Model model, Criteria criteria) throws Exception {
+        logger.info("listPaging ...");
+
+        PageMaker pageMaker = new PageMaker();
+        pageMaker.setCriteria(criteria);
+        pageMaker.setTotalCount(articleService.countArticles(criteria));
+
+        model.addAttribute("articles", articleService.listCriteria(criteria));
+        model.addAttribute("pageMaker", pageMaker);
+
+        return "/article/list_paging";
     }
 
 }

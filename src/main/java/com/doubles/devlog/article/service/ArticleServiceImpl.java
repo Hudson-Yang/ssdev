@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.doubles.devlog.article.domain.ArticleVO;
 import com.doubles.devlog.article.persistence.ArticleDAO;
+import com.doubles.devlog.commons.paging.Criteria;
 
 @Service
 public class ArticleServiceImpl implements ArticleService {
@@ -43,4 +44,15 @@ public class ArticleServiceImpl implements ArticleService {
     public List<ArticleVO> listAll() throws Exception {
         return articleDAO.listAll();
     }
+    
+    @Override
+    public List<ArticleVO> listCriteria(Criteria criteria) throws Exception {
+        return articleDAO.listCriteria(criteria);
+    }
+    
+    @Override
+    public int countArticles(Criteria criteria) throws Exception {
+        return articleDAO.countArticles(criteria);
+    }
+    
 }

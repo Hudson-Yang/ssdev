@@ -16,7 +16,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/")
 	public String home(Model model) throws Exception {
-		model.addAttribute("getit","더블에스 블로그 보고 공부하는 프로젝트");
+		model.addAttribute("getit","가나다라마바사아자");
 		logger.info("home() called");
 		return "home";
 	}

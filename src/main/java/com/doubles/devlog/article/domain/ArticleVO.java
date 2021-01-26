@@ -14,7 +14,6 @@ public class ArticleVO {
 		return articleNo;
 	}
 	public void setArticleNo(int articleNo) {
-		System.out.println("ArticleVO에서 찍어본 세터 씨스아웃:"+articleNo);
 		this.articleNo = articleNo;
 	}
 	public String getTitle() {
