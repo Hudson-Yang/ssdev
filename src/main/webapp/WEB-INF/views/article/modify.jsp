@@ -22,6 +22,8 @@
 					</div>
 					<div class="box-body">
 						<input type="hidden" name="articleNo" value="${article.articleNo}">
+						<input type="hidden" name="page" value="${criteria.page}">
+						<input type="hidden" name="perPageNum" value="${criteria.perPageNum}">
 						<div class="form-group">
 							<label for="title">제목</label> <input class="form-control"
 								id="title" name="title" placeholder="제목을 입력해주세요"
@@ -69,7 +71,7 @@
 			});
 
 			$(".listBtn").on("click", function() {
-				self.location = "/article/list"
+				self.location = "/article/listPaging?page=${criteria.page}&perPageNum=${criteria.perPageNum}"
 			});
 
 		});

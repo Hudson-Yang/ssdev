@@ -1,91 +1,109 @@
 package com.doubles.devlog.commons.paging;
 
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
+
 public class PageMaker {
-	 private int totalCount;
-	    private int startPage;
-	    private int endPage;
-	    private boolean prev;
-		private boolean next;
+	private int totalCount;
+	private int startPage;
+	private int endPage;
+	private boolean prev;
+	private boolean next;
 
-	    private int displayPageNum = 10;
+	private int displayPageNum = 10;
 
-	    private Criteria criteria;
+	private Criteria criteria;
 
-	    public void setCriteria(Criteria criteria) {
-	        this.criteria = criteria;
-	    }
+	public void setCriteria(Criteria criteria) {
+		this.criteria = criteria;
+	}
 
-	   
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
+		calcData();
+	}
 
-		public void setTotalCount(int totalCount) {
-	        this.totalCount = totalCount;
-	        calcData();
-	    }
+	private void calcData() {
 
-		private void calcData() {
+		endPage = (int) (Math.ceil(criteria.getPage() / (double) displayPageNum) * displayPageNum);
 
-	        endPage = (int) (Math.ceil(criteria.getPage() / (double) displayPageNum) * displayPageNum);
+		startPage = (endPage - displayPageNum) + 1;
 
-	        startPage = (endPage - displayPageNum) + 1;
+		int tempEndPage = (int) (Math.ceil(totalCount / (double) criteria.getPerPageNum()));
 
-	        int tempEndPage = (int) (Math.ceil(totalCount / (double) criteria.getPerPageNum()));
+		if (endPage > tempEndPage) {
+			endPage = tempEndPage;
+		}
 
-	        if (endPage > tempEndPage) {
-	            endPage = tempEndPage;
-	        }
+		prev = startPage != 1;
 
-	        prev = startPage != 1;
+		next = endPage * criteria.getPerPageNum() >= totalCount ? false : true;
 
-	        next = endPage * criteria.getPerPageNum() >= totalCount ? false : true;
+	}
+	
+	public String makeQuery(int page) {
+	    UriComponents uriComponents = UriComponentsBuilder.newInstance()
+	            .queryParam("page", page)
+	            .queryParam("perPageNum", criteria.getPerPageNum())
+	            .build();
 
-	    }
-		
-		// 세터 게터
-		 public int getStartPage() {
-				return startPage;
-			}
+	    return uriComponents.toUriString();
+	}
 
-			public void setStartPage(int startPage) {
-				this.startPage = startPage;
-			}
+	// 세터 게터
+	public int getStartPage() {
+		return startPage;
+	}
 
-			public int getEndPage() {
-				return endPage;
-			}
+	public void setStartPage(int startPage) {
+		this.startPage = startPage;
+	}
 
-			public void setEndPage(int endPage) {
-				this.endPage = endPage;
-			}
+	public int getEndPage() {
+		return endPage;
+	}
 
-			public boolean isPrev() {
-				return prev;
-			}
+	public void setEndPage(int endPage) {
+		this.endPage = endPage;
+	}
 
-			public void setPrev(boolean prev) {
-				this.prev = prev;
-			}
+	public boolean isPrev() {
+		return prev;
+	}
 
-			public boolean isNext() {
-				return next;
-			}
+	public void setPrev(boolean prev) {
+		this.prev = prev;
+	}
 
-			public void setNext(boolean next) {
-				this.next = next;
-			}
+	public boolean isNext() {
+		return next;
+	}
 
-			public int getDisplayPageNum() {
-				return displayPageNum;
-			}
+	public void setNext(boolean next) {
+		this.next = next;
+	}
 
-			public void setDisplayPageNum(int displayPageNum) {
-				this.displayPageNum = displayPageNum;
-			}
+	public int getDisplayPageNum() {
+		return displayPageNum;
+	}
 
-			public int getTotalCount() {
-				return totalCount;
-			}
+	public void setDisplayPageNum(int displayPageNum) {
+		this.displayPageNum = displayPageNum;
+	}
 
-			public Criteria getCriteria() {
-				return criteria;
-			}
+	public int getTotalCount() {
+		return totalCount;
+	}
+
+	public Criteria getCriteria() {
+		return criteria;
+	}
+
+	@Override
+	public String toString() {
+		return "PageMaker [totalCount=" + totalCount + ", startPage=" + startPage + ", endPage=" + endPage + ", prev="
+				+ prev + ", next=" + next + ", displayPageNum=" + displayPageNum + ", criteria=" + criteria + "]";
+	}
+	
+	
 }
