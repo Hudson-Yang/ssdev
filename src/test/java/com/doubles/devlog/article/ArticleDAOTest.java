@@ -112,4 +112,25 @@ public class ArticleDAOTest {
         logger.info(uriComponents.toString());
 
     }
+    
+    @Test
+    public void testDynamic1() throws Exception {
+
+        Criteria searchCriteria = new Criteria();
+        searchCriteria.setPage(1);
+        searchCriteria.setKeyword("99");
+        searchCriteria.setSearchType("t");
+
+        logger.info("======================");
+
+        List<ArticleVO> articles = articleDAO.listSearch(searchCriteria);
+
+        for (ArticleVO article : articles) {
+            logger.info(article.getArticleNo() + " : " + article.getTitle());
+        }
+
+        logger.info("======================");
+
+        logger.info("searched articles count : " + articleDAO.countSearchedArticles(searchCriteria));
+    }
 }

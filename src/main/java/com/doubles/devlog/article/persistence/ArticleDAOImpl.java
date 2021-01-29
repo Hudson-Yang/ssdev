@@ -68,4 +68,14 @@ public class ArticleDAOImpl implements ArticleDAO {
     public int countArticles(Criteria criteria) throws Exception {
         return sqlSession.selectOne(NAMESPACE + ".countArticles", criteria);
     }
+    
+    @Override
+    public List<ArticleVO> listSearch(Criteria criteria) throws Exception {
+        return sqlSession.selectList(NAMESPACE + ".listSearch", criteria);
+    }
+
+    @Override
+    public int countSearchedArticles(Criteria criteria) throws Exception {
+        return sqlSession.selectOne(NAMESPACE + ".countSearchedArticles", criteria);
+    }
 }

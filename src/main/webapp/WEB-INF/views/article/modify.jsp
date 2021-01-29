@@ -3,15 +3,13 @@
 <!DOCTYPE html>
 <html>
 <%@ include file="../include/head.jsp"%>
-<%@ include file="../include/main_header.jsp"%>
-<%@ include file="../include/left_column.jsp"%>
-<%@ include file="../include/main_footer.jsp"%>
-<%@ include file="../include/plugin_js.jsp"%>
 <head>
 <meta charset="UTF-8">
 <title>Modify</title>
 </head>
 <body>
+<%@ include file="../include/main_header.jsp"%>
+<%@ include file="../include/left_column.jsp"%>
 	<section class="content container-fluid">
 		<div class="col-lg-12">
 			<form role="form" id="writeForm" method="post"
@@ -24,6 +22,8 @@
 						<input type="hidden" name="articleNo" value="${article.articleNo}">
 						<input type="hidden" name="page" value="${criteria.page}">
 						<input type="hidden" name="perPageNum" value="${criteria.perPageNum}">
+						<input type="hidden" name="searchType" value="${criteria.searchType}"> 
+						<input type="hidden" name="keyword" value="${criteria.keyword}">
 						<div class="form-group">
 							<label for="title">제목</label> <input class="form-control"
 								id="title" name="title" placeholder="제목을 입력해주세요"
@@ -56,6 +56,8 @@
 			</form>
 		</div>
 	</section>
+<%@ include file="../include/main_footer.jsp"%>
+<%@ include file="../include/plugin_js.jsp"%>
 	<script>
 		$(document).ready(function() {
 
@@ -71,7 +73,10 @@
 			});
 
 			$(".listBtn").on("click", function() {
-				self.location = "/article/listPaging?page=${criteria.page}&perPageNum=${criteria.perPageNum}"
+				self.location = "/article/list?page=${criteria.page}"
+								+ "&perPageNum=${criteria.perPageNum}"
+								+ "&searchType=${criteria.searchType}"
+								+ "&keyword=&{criteria.keyword}";
 			});
 
 		});

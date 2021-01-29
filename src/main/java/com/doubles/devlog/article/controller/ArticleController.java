@@ -52,16 +52,16 @@ public class ArticleController {
         return "redirect:/article/list";
     }
     
-    // 목록 페이지 이동(페이징)
+    // 목록 페이지 이동(페이징, 검색)
     @GetMapping(value = "/list")
     public String list(Model model, Criteria criteria) throws Exception {
 
         logger.info("list ...");
         PageMaker pageMaker = new PageMaker();
         pageMaker.setCriteria(criteria);
-        pageMaker.setTotalCount(articleService.countArticles(criteria));
+        pageMaker.setTotalCount(articleService.countSearchedArticles(criteria));
 
-        model.addAttribute("articles", articleService.listCriteria(criteria));
+        model.addAttribute("articles", articleService.listSearch(criteria));
         model.addAttribute("pageMaker", pageMaker);
 
         return "/article/list";
@@ -93,8 +93,10 @@ public class ArticleController {
 
         logger.info("modifyPOST ...");
         articleService.update(articleVO);
-        redirectAttributes.addFlashAttribute("msg", "modSuccess");
+        redirectAttributes.addAttribute("page", criteria.getPage());
         redirectAttributes.addAttribute("perPageNum", criteria.getPerPageNum());
+        redirectAttributes.addAttribute("searchType", criteria.getSearchType());
+        redirectAttributes.addAttribute("keyword", criteria.getKeyword());
         redirectAttributes.addFlashAttribute("msg", "modSuccess");
 
         return "redirect:/article/list";
@@ -108,6 +110,8 @@ public class ArticleController {
         articleService.delete(articleNo);
         redirectAttributes.addAttribute("page", criteria.getPage());
         redirectAttributes.addAttribute("perPageNum", criteria.getPerPageNum());
+        redirectAttributes.addAttribute("searchType", criteria.getSearchType());
+        redirectAttributes.addAttribute("keyword", criteria.getKeyword());
         redirectAttributes.addFlashAttribute("msg", "delSuccess");
 
         return "redirect:/article/list";

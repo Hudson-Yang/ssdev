@@ -3,15 +3,13 @@
 <!DOCTYPE html>
 <html>
 <%@ include file="../include/head.jsp"%>
-<%@ include file="../include/main_header.jsp"%>
-<%@ include file="../include/left_column.jsp"%>
-<%@ include file="../include/main_footer.jsp"%>
-<%@ include file="../include/plugin_js.jsp"%>
 <head>
 <meta charset="UTF-8">
 <title>Read</title>
 </head>
 <body>
+<%@ include file="../include/main_header.jsp"%>
+<%@ include file="../include/left_column.jsp"%>
 	<section class="content container-fluid">
 		<div class="col-lg-12">
 			<div class="box box-primary">
@@ -33,7 +31,9 @@
 					<form role="form" method="post">
 						<input type="hidden" name="articleNo" value="${article.articleNo}">
 						<input type="hidden" name="page" value="${criteria.page}">
-        				<input type="hidden" name="perPageNum" value="${criteria.perPageNum}">
+						<input type="hidden" name="perPageNum" value="${criteria.perPageNum}">
+						<input type="hidden" name="searchType" value="${criteria.searchType}"> 
+						<input type="hidden" name="keyword" value="${criteria.keyword}">
 					</form>
 					<button type="submit" class="btn btn-primary listBtn">
 						<i class="fa fa-list"></i> 목록
@@ -50,30 +50,32 @@
 			</div>
 		</div>
 	</section>
+<%@ include file="../include/main_footer.jsp"%>
+<%@ include file="../include/plugin_js.jsp"%>
 	<script>
-	$(document).ready(function () {
+		$(document).ready(function() {
 
-	    var formObj = $("form[role='form']");
-	    console.log(formObj);
+			var formObj = $("form[role='form']");
+			console.log(formObj);
 
-	    $(".modBtn").on("click", function () {
-	        formObj.attr("action", "/article/modify");
-	        formObj.attr("method", "get");
-	        formObj.submit();
-	    });
+			$(".modBtn").on("click", function() {
+				formObj.attr("action", "/article/modify");
+				formObj.attr("method", "get");
+				formObj.submit();
+			});
 
-	    $(".delBtn").on("click", function () {
-	       formObj.attr("action", "/article/remove");
-	       formObj.submit();
-	    });
+			$(".delBtn").on("click", function() {
+				formObj.attr("action", "/article/remove");
+				formObj.submit();
+			});
 
-	    $(".listBtn").on("click", function () {
-	    	formObj.attr("method", "get");
-	        formObj.attr("action", "/article/listPaging");
-	        formObj.submit();
-	    });
+			$(".listBtn").on("click", function() {
+				formObj.attr("action", "/article/list");
+				formObj.attr("method", "get");
+				formObj.submit();
+			});
 
-	});
+		});
 	</script>
 </body>
 </html>

@@ -55,4 +55,14 @@ public class ArticleServiceImpl implements ArticleService {
         return articleDAO.countArticles(criteria);
     }
     
+    @Override
+    public List<ArticleVO> listSearch(Criteria criteria) throws Exception {
+        return articleDAO.listSearch(criteria);
+    }
+
+    @Override
+    public int countSearchedArticles(Criteria criteria) throws Exception {
+        return articleDAO.countSearchedArticles(criteria);
+    }
+    
 }
