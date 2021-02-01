@@ -118,8 +118,6 @@ public class ArticleDAOTest {
 
         Criteria searchCriteria = new Criteria();
         searchCriteria.setPage(1);
-        searchCriteria.setKeyword("99");
-        searchCriteria.setSearchType("t");
 
         logger.info("======================");
 

@@ -9,8 +9,8 @@
 <title>List Paging</title>
 </head>
 <body>
-<%@ include file="../include/main_header.jsp"%>
-<%@ include file="../include/left_column.jsp"%>
+	<%@ include file="../include/main_header.jsp"%>
+	<%@ include file="../include/left_column.jsp"%>
 	<section class="content container-fluid">
 		<div class="col-lg-12">
 			<div class="box box-primary">
@@ -31,8 +31,7 @@
 								<tr>
 									<td>${article.articleNo}</td>
 									<td><a
-										href="${path}/article/read${pageMaker.makeSearch(pageMaker.criteria.page)}&articleNo=${article.articleNo}">
-											${article.title} </a></td>
+										href="${path}/article/read${pageMaker.makeQuery(pageMaker.criteria.page)}&articleNo=${article.articleNo}">${article.title}</a></td>
 									<td>${article.writer}</td>
 									<td><fmt:formatDate value="${article.regDate}"
 											pattern="yyyy-MM-dd a HH:mm" /></td>
@@ -45,13 +44,12 @@
 				<div class="box-footer">
 					<div class="text-center">
 						<form id="listPageForm">
-							<input type="hidden" name="page"
-								value="${pageMaker.criteria.page}"> <input type="hidden"
-								name="perPageNum" value="${pageMaker.criteria.perPageNum}">
+							<input type="hidden" name="page" value="${pageMaker.criteria.page}"> 
+							<input type="hidden" name="perPageNum" value="${pageMaker.criteria.perPageNum}">
 						</form>
 						<ul class="pagination">
 							<c:if test="${pageMaker.prev}">
-								<li><a href="${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+								<li><a href="${pageMaker.startPage - 1}">이전</a></li>
 							</c:if>
 							<c:forEach begin="${pageMaker.startPage}"
 								end="${pageMaker.endPage}" var="idx">
@@ -61,44 +59,24 @@
 								</li>
 							</c:forEach>
 							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-								<li><a href="${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
+								<li><a href="${pageMaker.endPage + 1}">다음</a></li>
 							</c:if>
 						</ul>
 					</div>
 				</div>
 				<div class="box-footer">
-                        <div class="form-group col-sm-2">
-                            <select class="form-control" name="searchType" id="searchType">
-                                <option value="n" <c:out value="${searchCriteria.searchType == null ? 'selected' : ''}"/>>:::::: 선택 ::::::</option>
-                                <option value="t" <c:out value="${searchCriteria.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
-                                <option value="c" <c:out value="${searchCriteria.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
-                                <option value="w" <c:out value="${searchCriteria.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
-                                <option value="tc" <c:out value="${searchCriteria.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
-                                <option value="cw" <c:out value="${searchCriteria.searchType eq 'cw' ? 'selected' : ''}"/>>내용+작성자</option>
-                                <option value="tcw" <c:out value="${searchCriteria.searchType eq 'tcw' ? 'selected' : ''}"/>>제목+내용+작성자</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-sm-10">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="keyword" id="keywordInput" value="${searchCriteria.keyword}" placeholder="검색어">
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-primary btn-flat" id="searchBtn">
-                                        <i class="fa fa-search"></i> 검색
-                                    </button>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="pull-right">
-                            <button type="button" class="btn btn-success btn-flat" id="writeBtn">
-                                <i class="fa fa-pencil"></i> 글쓰기
-                            </button>
-                        </div>
-                    </div>
+					<div class="pull-right">
+						<button type="button" class="btn btn-success btn-flat"
+							id="writeBtn">
+							<i class="fa fa-pencil"></i> 글쓰기
+						</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
-<%@ include file="../include/main_footer.jsp"%>
-<%@ include file="../include/plugin_js.jsp"%>
+	<%@ include file="../include/main_footer.jsp"%>
+	<%@ include file="../include/plugin_js.jsp"%>
 	<script>
 		var result = "${msg}";
 		if (result == "regSuccess") {
@@ -117,16 +95,6 @@
 			listPageForm.find("[name='page']").val(targetPage);
 			listPageForm.attr("action", "/article/list").attr("method", "get");
 			listPageForm.submit();
-		});
-		
-		$(document).ready(function () {
-
-		    $("#searchBtn").on("click", function (event) {
-		        self.location =
-		            "/article/list${pageMaker.makeQuery(1)}"
-		            + "&searchType=" + $("select option:selected").val()
-		            + "&keyword=" + encodeURIComponent($("#keywordInput").val());
-		    });
 		});
 	</script>
 </body>

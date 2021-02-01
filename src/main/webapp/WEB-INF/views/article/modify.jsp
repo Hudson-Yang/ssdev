@@ -22,8 +22,6 @@
 						<input type="hidden" name="articleNo" value="${article.articleNo}">
 						<input type="hidden" name="page" value="${criteria.page}">
 						<input type="hidden" name="perPageNum" value="${criteria.perPageNum}">
-						<input type="hidden" name="searchType" value="${criteria.searchType}"> 
-						<input type="hidden" name="keyword" value="${criteria.keyword}">
 						<div class="form-group">
 							<label for="title">제목</label> <input class="form-control"
 								id="title" name="title" placeholder="제목을 입력해주세요"
@@ -74,9 +72,7 @@
 
 			$(".listBtn").on("click", function() {
 				self.location = "/article/list?page=${criteria.page}"
-								+ "&perPageNum=${criteria.perPageNum}"
-								+ "&searchType=${criteria.searchType}"
-								+ "&keyword=&{criteria.keyword}";
+								+ "&perPageNum=${criteria.perPageNum}";
 			});
 
 		});
