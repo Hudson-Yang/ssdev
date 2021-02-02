@@ -3,9 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.doubles.devlog.mappers.user.UserMapper">
+<mapper namespace="com.doubles.devlog.mappers.user.userMapper">
 
-	<resultMap id="userVOResultMap" type="UserVO">
+	<resultMap id="userVOResultMap" type="com.doubles.devlog.user.domain.UserVO">
 		<id property="userId" column="user_id" />
 		<result property="userPw" column="user_pw" />
 		<result property="userName" column="user_name" />

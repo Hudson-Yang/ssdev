@@ -11,7 +11,7 @@ import com.doubles.devlog.user.domain.UserVO;
 @Repository
 public class UserDAOImpl implements UserDAO {
     
-    private static final String NAMESPACE = "com.doubles.devlog.mappers.user.UserMapper";
+    private static final String NAMESPACE = "com.doubles.devlog.mappers.user.userMapper";
     
     private final SqlSession sqlSession;
 
