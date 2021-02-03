@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.doubles.devlog.article.domain.ArticleVO;
 import com.doubles.devlog.commons.paging.Criteria;
+import com.doubles.devlog.commons.paging.SearchCriteria;
 
 public interface ArticleService {
 
@@ -20,5 +21,9 @@ public interface ArticleService {
     List<ArticleVO> listCriteria(Criteria criteria) throws Exception;
     
     int countArticles(Criteria criteria) throws Exception;
+    
+    List<ArticleVO> listSearch(SearchCriteria searchCriteria) throws Exception;
+
+    int countSearchedArticles(SearchCriteria searchCriteria) throws Exception;
     
 }

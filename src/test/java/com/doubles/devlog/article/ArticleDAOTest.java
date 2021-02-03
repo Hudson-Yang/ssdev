@@ -16,6 +16,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.doubles.devlog.article.domain.ArticleVO;
 import com.doubles.devlog.article.persistence.ArticleDAO;
 import com.doubles.devlog.commons.paging.Criteria;
+import com.doubles.devlog.commons.paging.SearchCriteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring-config/applicationContext.xml"})
@@ -112,12 +113,13 @@ public class ArticleDAOTest {
         logger.info(uriComponents.toString());
 
     }
-    
     @Test
     public void testDynamic1() throws Exception {
 
-        Criteria searchCriteria = new Criteria();
+        SearchCriteria searchCriteria = new SearchCriteria();
         searchCriteria.setPage(1);
+        searchCriteria.setKeyword("99");
+        searchCriteria.setSearchType("t");
 
         logger.info("======================");
 

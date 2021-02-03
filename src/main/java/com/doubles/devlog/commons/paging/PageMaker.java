@@ -1,5 +1,8 @@
 package com.doubles.devlog.commons.paging;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -54,9 +57,23 @@ public class PageMaker {
 	    UriComponents uriComponents = UriComponentsBuilder.newInstance()
 	            .queryParam("page", page)
 	            .queryParam("pagePageNum", criteria.getPerPageNum())
+	            .queryParam("searchType", ((SearchCriteria) criteria).getSearchType())
+	            .queryParam("keyword", encoding(((SearchCriteria) criteria).getKeyword()))
 	            .build();
 
 	    return uriComponents.toUriString();
+	}
+	
+	private String encoding(String keyword) {
+	    if (keyword == null || keyword.trim().length() == 0) {
+	        return "";
+	    }
+
+	    try {
+	        return URLEncoder.encode(keyword, "UTF-8");
+	    } catch (UnsupportedEncodingException e) {
+	        return "";
+	    }
 	}
 
 	// 세터 게터
