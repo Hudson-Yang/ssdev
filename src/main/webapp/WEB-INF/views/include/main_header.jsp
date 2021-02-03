@@ -26,8 +26,7 @@
 							<li class="user-header"><img src="/${login.userImg}"
 								class="img-circle" alt="User Image">
 								<p>${login.userName}
-									<small> 가입일자 : <fmt:formatDate
-											value="${login.userJoinDate}" pattern="yyyy-MM-dd" />
+									<small> 가입일자 : <fmt:formatDate value="${login.userJoinDate}" pattern="yyyy-MM-dd" />
 									</small>
 								</p></li>
 							<li class="user-body">

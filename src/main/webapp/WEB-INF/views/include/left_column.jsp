@@ -29,37 +29,8 @@
 			</c:if>
 		</div>
 
-		<!-- search form (Optional) -->
-		<form action="#" method="get" class="sidebar-form">
-			<div class="input-group">
-				<input type="text" name="q" class="form-control"
-					placeholder="Search..."> <span class="input-group-btn">
-					<button type="submit" name="search" id="search-btn"
-						class="btn btn-flat">
-						<i class="fa fa-search"></i>
-					</button>
-				</span>
-			</div>
-		</form>
-		<!-- /.search form -->
-
 		<!-- Sidebar Menu -->
 		<ul class="sidebar-menu" data-widget="tree">
-			<li class="header">테스트 예제</li>
-			<li class="treeview"><a href="#"><i class="fa fa-folder"></i>
-					<span>예제</span> <span class="pull-right-container"> <i
-						class="fa fa-angle-left pull-right"></i>
-				</span> </a>
-				<ul class="treeview-menu">
-					<li><a href="${path}/reply/test"><i class="fa fa-comment"></i>
-							댓글 </a></li>
-					<li><a href="${path}/file/form/uploadPage"><i
-							class="fa fa-file"></i> 파일 업로드(Form)</a></li>
-					<li><a href="${path}/file/ajax/uploadPage"><i
-							class="fa fa-file"></i> 파일 업로드(Ajax Drop)</a></li>
-					<li><a href="${path}/interceptor/doA"><i
-							class="fa fa-mail-forward"></i> 인터셉터</a></li>
-				</ul></li>
 			<li class="header">게시판</li>
 			<li class="treeview"><a href="#"><i class="fa fa-edit"></i>
 					<span>게시판</span> <span class="pull-right-container"> <i

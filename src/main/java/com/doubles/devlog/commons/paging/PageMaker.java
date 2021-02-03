@@ -59,17 +59,6 @@ public class PageMaker {
 	    return uriComponents.toUriString();
 	}
 
-//	private String encoding(String keyword) {
-//	    if (keyword == null || keyword.trim().length() == 0) {
-//	        return "";
-//	    }
-//	    try {
-//	        return URLEncoder.encode(keyword, "UTF-8");
-//	    } catch (UnsupportedEncodingException e) {
-//	        return "";
-//	    }
-//	}
-
 	// 세터 게터
 	public int getStartPage() {
 		return startPage;
