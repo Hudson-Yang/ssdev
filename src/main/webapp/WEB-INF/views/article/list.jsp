@@ -8,9 +8,11 @@
 
 <title>List Paging</title>
 </head>
-<body>
+<body class="hold-transition skin-blue sidebar-mini layout-boxed">
+<div class="wrapper">
 	<%@ include file="../include/main_header.jsp"%>
 	<%@ include file="../include/left_column.jsp"%>
+	<div class="content-wrapper">
 	<section class="content container-fluid">
 		<div class="col-lg-12">
 			<div class="box box-primary">
@@ -89,8 +91,10 @@
 			</div>
 		</div>
 	</section>
+	</div>
 	<%@ include file="../include/main_footer.jsp"%>
-	<%@ include file="../include/plugin_js.jsp"%>
+</div>
+<%@ include file="../include/plugin_js.jsp"%>
 	<script>
 		$(document).ready(function () {
 		

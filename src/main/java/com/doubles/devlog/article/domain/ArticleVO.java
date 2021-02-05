@@ -1,5 +1,6 @@
 package com.doubles.devlog.article.domain;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class ArticleVO {
@@ -9,11 +10,15 @@ public class ArticleVO {
     private String content;
     private String writer;
     private Date regDate;
+    private int viewCnt;
+    
+    private String[] files;
+    private int fileCnt;
     
 	public Integer getArticleNo() {
 		return articleNo;
 	}
-	public void setArticleNo(int articleNo) {
+	public void setArticleNo(Integer articleNo) {
 		this.articleNo = articleNo;
 	}
 	public String getTitle() {
@@ -46,12 +51,25 @@ public class ArticleVO {
 	public void setViewCnt(int viewCnt) {
 		this.viewCnt = viewCnt;
 	}
-	private int viewCnt;
+	
+	public String[] getFiles() {
+		return files;
+	}
+	public void setFiles(String[] files) {
+		this.files = files;
+	}
+	public int getFileCnt() {
+		return fileCnt;
+	}
+	public void setFileCnt(int fileCnt) {
+		this.fileCnt = fileCnt;
+	}
 	
 	@Override
 	public String toString() {
 		return "ArticleVO [articleNo=" + articleNo + ", title=" + title + ", content=" + content + ", writer=" + writer
-				+ ", regDate=" + regDate + ", viewCnt=" + viewCnt + "]";
+				+ ", regDate=" + regDate + ", viewCnt=" + viewCnt + ", files=" + Arrays.toString(files) + ", fileCnt="
+				+ fileCnt + "]";
 	}
 
 }

@@ -7,9 +7,11 @@
 <meta charset="UTF-8">
 <title>Read</title>
 </head>
-<body>
+<body class="hold-transition skin-blue sidebar-mini layout-boxed">
+<div class="wrapper">
 <%@ include file="../include/main_header.jsp"%>
 <%@ include file="../include/left_column.jsp"%>
+<div class="content-wrapper">
 	<section class="content container-fluid">
 		<div class="col-lg-12">
 			<div class="box box-primary">
@@ -17,7 +19,11 @@
 					<h3 class="box-title">글제목 : ${article.title}</h3>
 				</div>
 				<div class="box-body" style="height: 700px">
-					${article.content}</div>
+					${article.content}
+				</div>
+				<div class="box-footer uploadFiles">
+                	<ul class="mailbox-attachments clearfix uploadedFileList"></ul>
+                </div>
 				<div class="box-footer">
 					<div class="user-block">
 						<img class="img-circle img-bordered-sm"
@@ -52,7 +58,9 @@
 			</div>
 		</div>
 	</section>
+	</div>
 <%@ include file="../include/main_footer.jsp"%>
+</div>
 <%@ include file="../include/plugin_js.jsp"%>
 	<script>
 		$(document).ready(function() {
@@ -79,5 +87,18 @@
 
 		});
 	</script>
+	<script id="fileTemplate" type="text/x-handlebars-template">
+    <li data-src="{{fullName}}">
+        <span class="mailbox-attachment-icon has-img">
+            <img src="{{imgSrc}}" alt="Attachment">
+        </span>
+        <div class="mailbox-attachment-info">
+            <a href="{{originalFileUrl}}" class="mailbox-attachment-name">
+                <i class="fa fa-paperclip"></i> {{originalFileName}}
+            </a>
+        </div>
+    </li>
+</script>
+<script type="text/javascript" src="/resources/dist/js/article_file_upload.js"></script>
 </body>
 </html>

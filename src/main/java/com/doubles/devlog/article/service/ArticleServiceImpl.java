@@ -5,25 +5,37 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.doubles.devlog.article.domain.ArticleVO;
 import com.doubles.devlog.article.persistence.ArticleDAO;
 import com.doubles.devlog.commons.paging.Criteria;
 import com.doubles.devlog.commons.paging.SearchCriteria;
+import com.doubles.devlog.upload.persistence.ArticleFileDAO;
 
 @Service
 public class ArticleServiceImpl implements ArticleService {
 
     private final ArticleDAO articleDAO;
+    private final ArticleFileDAO articleFileDAO;
 
     @Inject
-    public ArticleServiceImpl(ArticleDAO articleDAO) {
+    public ArticleServiceImpl(ArticleDAO articleDAO,ArticleFileDAO articleFileDAO) {
         this.articleDAO = articleDAO;
+        this.articleFileDAO = articleFileDAO;
     }
 
     @Override
     public void create(ArticleVO articleVO) throws Exception {
         articleDAO.create(articleVO);
+        String[] files = articleVO.getFiles();
+        
+        if (files == null)
+            return;
+
+        // 게시글 첨부파일 입력처리
+        for (String fileName : files)
+            articleFileDAO.addFile(fileName);
     }
 
     @Override
@@ -31,9 +43,19 @@ public class ArticleServiceImpl implements ArticleService {
         return articleDAO.read(articleNo);
     }
 
+    @Transactional
     @Override
     public void update(ArticleVO articleVO) throws Exception {
+        Integer articleNo = articleVO.getArticleNo();
+        String[] files = articleVO.getFiles();
+
         articleDAO.update(articleVO);
+        articleFileDAO.deleteFiles(articleNo);
+
+        if (files == null)
+            return;
+        for (String fileName : files)
+            articleFileDAO.replaceFile(fileName, articleNo);
     }
 
     @Override
