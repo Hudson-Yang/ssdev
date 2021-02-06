@@ -74,6 +74,7 @@ public class ArticleController {
 
         logger.info("read ...");
         model.addAttribute("article", articleService.read(articleNo));
+        System.out.println(articleService.read(articleNo).getFiles());
 
         return "/article/read";
     }

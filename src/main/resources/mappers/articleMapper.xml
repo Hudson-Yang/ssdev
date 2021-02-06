@@ -14,6 +14,7 @@
 		, content
 		, writer
 		, viewcnt
+		, file_cnt
 		)
 		VALUES (
 		#{articleNo}
@@ -21,6 +22,7 @@
 		, #{content}
 		, #{writer}
 		, #{viewCnt}
+		, #{fileCnt}
 		)
 		<selectKey keyProperty="articleNo" resultType="integer"
 			order="AFTER">
@@ -33,10 +35,10 @@
 		article_no
 		, title
 		, content
-		,
-		writer
+		, writer
 		, regdate
 		, viewcnt
+		, file_cnt
 		FROM
 		tbl_article
 		WHERE article_no = #{articleNo}
@@ -66,7 +68,8 @@
             content,
             writer,
             regdate,
-            viewcnt
+            viewcnt,
+            file_cnt
         FROM tbl_article
         WHERE article_no > 0
         ORDER BY article_no DESC, regdate DESC
@@ -81,7 +84,8 @@
         	content,
         	writer,
         	regdate,
-        	viewcnt
+        	viewcnt,
+        	file_cnt
     	FROM tbl_article
     	WHERE article_no > 0
     	ORDER BY article_no DESC, regdate DESC
@@ -97,7 +101,8 @@
         	content,
         	writer,
         	regdate,
-        	viewcnt
+        	viewcnt,
+        	file_cnt
     	FROM tbl_article
     	WHERE article_no > 0
     	ORDER BY article_no DESC, regdate DESC
@@ -122,7 +127,8 @@
         content,
         writer,
         regdate,
-        viewcnt
+        viewcnt,
+        file_cnt
     FROM tbl_article
     WHERE article_no > 0
     ]]>
@@ -183,6 +189,7 @@
 		<result property="writer" column="writer" />
 		<result property="regDate" column="regdate" />
 		<result property="viewCnt" column="viewcnt" />
+		<result property="fileCnt" column="file_cnt" />
 	</resultMap>
 
 </mapper>

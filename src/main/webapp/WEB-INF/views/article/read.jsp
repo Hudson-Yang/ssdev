@@ -44,7 +44,7 @@
 					<button type="submit" class="btn btn-primary listBtn">
 						<i class="fa fa-list"></i> 목록
 					</button>
-					<c:if test="${login.userId == article.writer}">
+					<%-- <c:if test="${login.userId == article.writer}"> --%>
 					<div class="pull-right">
 						<button type="submit" class="btn btn-warning modBtn">
 							<i class="fa fa-edit"></i> 수정
@@ -53,7 +53,7 @@
 							<i class="fa fa-trash"></i> 삭제
 						</button>
 					</div>
-					</c:if>
+					<%-- </c:if> --%>
 				</div>
 			</div>
 		</div>
@@ -62,6 +62,18 @@
 <%@ include file="../include/main_footer.jsp"%>
 </div>
 <%@ include file="../include/plugin_js.jsp"%>
+<script id="fileTemplate" type="text/x-handlebars-template">
+    <li data-src="{{fullName}}">
+        <span class="mailbox-attachment-icon has-img">
+            <img src="{{imgSrc}}" alt="Attachment">
+        </span>
+        <div class="mailbox-attachment-info">
+            <a href="{{originalFileUrl}}" class="mailbox-attachment-name">
+                <i class="fa fa-paperclip"></i> {{originalFileName}}
+            </a>
+        </div>
+    </li>
+</script>
 	<script>
 		$(document).ready(function() {
 
@@ -87,18 +99,7 @@
 
 		});
 	</script>
-	<script id="fileTemplate" type="text/x-handlebars-template">
-    <li data-src="{{fullName}}">
-        <span class="mailbox-attachment-icon has-img">
-            <img src="{{imgSrc}}" alt="Attachment">
-        </span>
-        <div class="mailbox-attachment-info">
-            <a href="{{originalFileUrl}}" class="mailbox-attachment-name">
-                <i class="fa fa-paperclip"></i> {{originalFileName}}
-            </a>
-        </div>
-    </li>
-</script>
+	
 <script type="text/javascript" src="/resources/dist/js/article_file_upload.js"></script>
 </body>
 </html>
