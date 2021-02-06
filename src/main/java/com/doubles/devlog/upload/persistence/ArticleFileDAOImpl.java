@@ -24,8 +24,8 @@ public class ArticleFileDAOImpl implements ArticleFileDAO {
     }
 
     @Override
-    public void addFile(String fileName) throws Exception {
-        sqlSession.insert(NAMESPACE + ".addFile", fileName);
+    public void addFile(ArticleFileVO artcleFileVO) throws Exception {
+        sqlSession.insert(NAMESPACE + ".addFile", artcleFileVO);
     }
     
     @Override

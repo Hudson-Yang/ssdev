@@ -18,5 +18,12 @@ public class ArticleFileVO {
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
+	
+	@Override
+	public String toString() {
+		return "ArticleFileVO [articleNo=" + articleNo + ", fileName=" + fileName + "]";
+	}
 
+	
+	
 }

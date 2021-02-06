@@ -11,6 +11,7 @@ import com.doubles.devlog.article.domain.ArticleVO;
 import com.doubles.devlog.article.persistence.ArticleDAO;
 import com.doubles.devlog.commons.paging.Criteria;
 import com.doubles.devlog.commons.paging.SearchCriteria;
+import com.doubles.devlog.upload.domain.ArticleFileVO;
 import com.doubles.devlog.upload.persistence.ArticleFileDAO;
 
 @Service
@@ -29,13 +30,20 @@ public class ArticleServiceImpl implements ArticleService {
     public void create(ArticleVO articleVO) throws Exception {
         articleDAO.create(articleVO);
         String[] files = articleVO.getFiles();
+        int articleNo = articleVO.getArticleNo();
+        
+        ArticleFileVO articleFileVO;
         
         if (files == null)
             return;
 
         // 게시글 첨부파일 입력처리
-        for (String fileName : files)
-            articleFileDAO.addFile(fileName);
+        for (int i=0 ; i<files.length ; i++) {
+        	articleFileVO = new ArticleFileVO();
+        	articleFileVO.setArticleNo(articleNo);
+        	articleFileVO.setFileName(files[i]);
+            articleFileDAO.addFile(articleFileVO);
+        }
     }
 
     @Override

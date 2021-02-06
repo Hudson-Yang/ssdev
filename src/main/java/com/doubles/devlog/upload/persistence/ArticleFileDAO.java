@@ -7,7 +7,7 @@ import com.doubles.devlog.upload.domain.ArticleFileVO;
 public interface ArticleFileDAO {
 
     // 파일 추가
-    void addFile(String fileName) throws Exception;
+    void addFile(ArticleFileVO articleFileVO) throws Exception;
     
     // 파일 목록
     List<String> getArticleFiles(Integer articleNo) throws Exception;
