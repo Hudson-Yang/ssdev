@@ -32,6 +32,7 @@ public class UploadFileUtils {
 
 	        // 2. 파일 업로드 경로 설정
 	        String rootPath = getRootPath(originalFileName, request); // 기본경로 추출(이미지 or 일반파일)
+	        logger.info("파일 업로드 기본 경로 : "+rootPath);
 	        String datePath = getDatePath(rootPath); // 날짜 경로 추출, 날짜 폴더 생성
 
 	        // 3. 서버에 파일 저장
@@ -47,7 +48,7 @@ public class UploadFileUtils {
 	        return replaceSavedFilePath(datePath, uuidFileName);
 	    }
 	    
-	 // 파일 업로드 처리
+	    // 이미지파일 업로드 처리
 	    public static String uploadUserImg(MultipartFile file, HttpServletRequest request) throws Exception {
 
 	        String originalFileName = file.getOriginalFilename(); // 파일명
@@ -112,9 +113,9 @@ public class UploadFileUtils {
 
 	        String rootPath = "/resources/upload";
 	        MediaType mediaType = MediaUtils.getMediaType(fileName); // 파일타입 확인
-	        if (mediaType != null)
+	        if (mediaType != null) {
 	            return request.getSession().getServletContext().getRealPath(rootPath + "/images"); // 이미지 파일 경로
-
+	        }
 	        return request.getSession().getServletContext().getRealPath(rootPath + "/files"); // 일반파일 경로
 	    }
 

@@ -60,7 +60,6 @@ public class ArticleVO {
 		setFileCnt(files.length);
 	}
 	public int getFileCnt() {
-		System.out.println(fileCnt);
 		return fileCnt;
 	}
 	public void setFileCnt(int fileCnt) {

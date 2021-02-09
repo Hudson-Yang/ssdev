@@ -146,6 +146,6 @@ function getFileInfo(fullName) {
 
 // 이미지 파일 유무 확인
 function checkImageType(fullName) {
-    var pattern = /jpg$|gif$|png$|jpge$/i;
+    var pattern = /jpg$|gif$|png$|jpeg$/i;
     return fullName.match(pattern);
 }

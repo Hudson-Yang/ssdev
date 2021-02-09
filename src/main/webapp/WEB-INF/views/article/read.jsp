@@ -74,32 +74,36 @@
         </div>
     </li>
 </script>
-	<script>
-		$(document).ready(function() {
-
-			var formObj = $("form[role='form']");
-			console.log(formObj);
-
-			$(".modBtn").on("click", function() {
-				formObj.attr("action", "/article/modify");
-				formObj.attr("method", "get");
-				formObj.submit();
-			});
-
-			$(".delBtn").on("click", function() {
-				formObj.attr("action", "/article/remove");
-				formObj.submit();
-			});
-
-			$(".listBtn").on("click", function() {
-				formObj.attr("action", "/article/list");
-				formObj.attr("method", "get");
-				formObj.submit();
-			});
-
+<script type="text/javascript" src="/resources/dist/js/article_file_upload.js"></script>
+<script>
+	$(document).ready(function() {
+		
+		var articleNo = "${article.articleNo}";
+		getFiles(articleNo);
+		
+		var formObj = $("form[role='form']");
+		console.log(formObj);
+		
+		$(".modBtn").on("click", function() {
+			formObj.attr("action", "/article/modify");
+			formObj.attr("method", "get");
+			formObj.submit();
 		});
+		
+		$(".delBtn").on("click", function() {
+			formObj.attr("action", "/article/remove");
+			formObj.submit();
+		});
+		
+		$(".listBtn").on("click", function() {
+			formObj.attr("action", "/article/list");
+			formObj.attr("method", "get");
+			formObj.submit();
+		});
+		
+	});
 	</script>
 	
-<script type="text/javascript" src="/resources/dist/js/article_file_upload.js"></script>
+
 </body>
 </html>
