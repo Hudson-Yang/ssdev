@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.doubles.devlog.article.controller.ArticleController;
 import com.doubles.devlog.commons.util.UploadFileUtils;
 import com.doubles.devlog.upload.service.ArticleFileService;
 
@@ -31,6 +32,9 @@ public class ArticleFileController {
 	private static final Logger logger = LoggerFactory.getLogger(ArticleFileController.class);
 
     private final ArticleFileService articleFileService;
+    
+    @Autowired
+    ResourceLoader resourceLoader;
 
     @Inject
     public ArticleFileController(ArticleFileService articleFileService) {
@@ -57,7 +61,6 @@ public class ArticleFileController {
 
         HttpHeaders httpHeaders = UploadFileUtils.getHttpHeaders(fileName); // Http 헤더 설정 가져오기
         String rootPath = UploadFileUtils.getRootPath(fileName, request); // 업로드 기본경로 경로
-
         ResponseEntity<byte[]> entity = null;
 
         // 파일데이터, HttpHeader 전송
@@ -76,9 +79,7 @@ public class ArticleFileController {
         ResponseEntity<List<String>> entity = null;
         try {
             List<String> fileList = articleFileService.getArticleFiles(articleNo);
-            System.out.println("첨부파일(fileList) : "+fileList);
             entity = new ResponseEntity<>(fileList, HttpStatus.OK);
-            System.out.println("첨부파일(entity) : "+entity);
         } catch (Exception e) {
             e.printStackTrace();
             entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
