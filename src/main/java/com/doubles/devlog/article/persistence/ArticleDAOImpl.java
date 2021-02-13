@@ -1,6 +1,8 @@
 package com.doubles.devlog.article.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -77,5 +79,20 @@ public class ArticleDAOImpl implements ArticleDAO {
     @Override
     public int countSearchedArticles(Criteria criteria) throws Exception {
         return sqlSession.selectOne(NAMESPACE + ".countSearchedArticles", criteria);
+    }
+    
+    @Override
+    public void updateReplyCnt(Integer articleNo, int amount) throws Exception {
+
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("articleNo", articleNo);
+        paramMap.put("amount", amount);
+
+        sqlSession.update(NAMESPACE + ".updateReplyCnt", paramMap);
+    }
+
+    @Override
+    public void updateViewCnt(Integer articleNo) throws Exception {
+        sqlSession.update(NAMESPACE + ".updateViewCnt", articleNo);
     }
 }

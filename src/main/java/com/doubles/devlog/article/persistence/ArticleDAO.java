@@ -26,5 +26,9 @@ public interface ArticleDAO {
     List<ArticleVO> listSearch(Criteria criteria) throws Exception;
 
     int countSearchedArticles(Criteria criteria) throws Exception;
+    
+    void updateReplyCnt(Integer articleNo, int amount) throws Exception;
+
+    void updateViewCnt(Integer articleNo) throws Exception;
 
 }

@@ -3,8 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper
-	namespace="com.doubles.devlog.mappers.article.ArticleMapper">
+<mapper namespace="com.doubles.devlog.mappers.article.ArticleMapper">
 
 	<insert id="create">
 
@@ -13,7 +12,7 @@
 		, title
 		, content
 		, writer
-		, viewcnt
+		, view_cnt
 		, file_cnt
 		)
 		VALUES (
@@ -36,8 +35,8 @@
 		, title
 		, content
 		, writer
-		, regdate
-		, viewcnt
+		, reg_date
+		, view_cnt
 		, file_cnt
 		FROM
 		tbl_article
@@ -67,12 +66,12 @@
             title,
             content,
             writer,
-            regdate,
-            viewcnt,
+            reg_date,
+            view_cnt,
             file_cnt
         FROM tbl_article
         WHERE article_no > 0
-        ORDER BY article_no DESC, regdate DESC
+        ORDER BY article_no DESC, reg_date DESC
         ]]>
 	</select>
 
@@ -83,12 +82,12 @@
         	title,
         	content,
         	writer,
-        	regdate,
-        	viewcnt,
+        	reg_date,
+        	view_cnt,
         	file_cnt
     	FROM tbl_article
     	WHERE article_no > 0
-    	ORDER BY article_no DESC, regdate DESC
+    	ORDER BY article_no DESC, reg_date DESC
     	LIMIT #{page}, 10
     	]]>
 	</select>
@@ -100,12 +99,12 @@
         	title,
         	content,
         	writer,
-        	regdate,
-        	viewcnt,
+        	reg_date,
+        	view_cnt,
         	file_cnt
     	FROM tbl_article
     	WHERE article_no > 0
-    	ORDER BY article_no DESC, regdate DESC
+    	ORDER BY article_no DESC, reg_date DESC
     	LIMIT #{pageStart}, #{perPageNum}
     	]]>
 	</select>
@@ -126,15 +125,15 @@
         title,
         content,
         writer,
-        regdate,
-        viewcnt,
+        reg_date,
+        view_cnt,
         file_cnt
     FROM tbl_article
     WHERE article_no > 0
     ]]>
 		<include refid="search" />
     <![CDATA[
-    ORDER BY article_no DESC, regdate DESC
+    ORDER BY article_no DESC, reg_date DESC
     LIMIT #{pageStart}, #{perPageNum}
     ]]>
 	</select>
@@ -148,6 +147,18 @@
     ]]>
 		<include refid="search" />
 	</select>
+	
+	<update id="updateReplyCnt">
+        UPDATE tbl_article
+        SET reply_cnt = reply_cnt + #{amount}
+        WHERE article_no = #{articleNo}
+    </update>
+
+    <update id="updateViewCnt">
+        UPDATE tbl_article
+        SET view_cnt = view_cnt + 1
+        WHERE article_no = #{articleNo}
+    </update>
 
 	<sql id="search">
 		<if test="searchType != null">
@@ -187,8 +198,8 @@
 		<result property="title" column="title" />
 		<result property="content" column="content" />
 		<result property="writer" column="writer" />
-		<result property="regDate" column="regdate" />
-		<result property="viewCnt" column="viewcnt" />
+		<result property="regDate" column="reg_date" />
+		<result property="viewCnt" column="view_cnt" />
 		<result property="fileCnt" column="file_cnt" />
 	</resultMap>
 
