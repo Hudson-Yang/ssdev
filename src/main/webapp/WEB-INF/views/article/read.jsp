@@ -44,7 +44,7 @@
 					<button type="submit" class="btn btn-primary listBtn">
 						<i class="fa fa-list"></i> 목록
 					</button>
-					<%-- <c:if test="${login.userId == article.writer}"> --%>
+					<c:if test="${login.userId == article.writer}"> 
 					<div class="pull-right">
 						<button type="submit" class="btn btn-warning modBtn">
 							<i class="fa fa-edit"></i> 수정
@@ -53,7 +53,7 @@
 							<i class="fa fa-trash"></i> 삭제
 						</button>
 					</div>
-					<%-- </c:if> --%>
+					</c:if>
 				</div>
 			</div>
 			
@@ -62,7 +62,7 @@
                         <a class="link-black text-lg"><i class="fa fa-pencil margin-r-5"></i> 댓글 쓰기</a>
                     </div>
                     <div class="box-body">
-                        <%-- <c:if test="${not empty login}"> --%>
+                        <c:if test="${not empty login}">
                             <form>
                                 <div class="form-group">
                                     <textarea class="form-control" id="newReplyText" rows="3" placeholder="댓글내용..."style="resize: none"></textarea>
@@ -74,12 +74,12 @@
                                     <i class="fa fa-save"></i> 댓글 저장
                                 </button>
                             </form>
-                        <%-- </c:if> --%>
-                        <%-- <c:if test="${empty login}">
+                        </c:if>
+                        <c:if test="${empty login}">
                             <a href="${path}/user/login" class="btn btn-default btn-block" role="button">
                                 <i class="fa fa-edit"></i> 로그인 한 사용자만 댓글 등록이 가능합니다.
                             </a>
-                        </c:if> --%>
+                        </c:if>
                     </div>
                 </div>
                 

@@ -5,6 +5,7 @@
 	<typeAliases>
 		<typeAlias type="com.doubles.devlog.article.domain.ArticleVO" alias="ArticleVO" />
 		<typeAlias type="com.doubles.devlog.reply.domain.ReplyVO" alias="ReplyVO" />
+		<typeAlias type="com.doubles.devlog.user.domain.UserVO" alias="UserVO" />
 	</typeAliases>
 
 </configuration>

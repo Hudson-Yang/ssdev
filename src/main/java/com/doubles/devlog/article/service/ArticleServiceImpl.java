@@ -99,4 +99,6 @@ public class ArticleServiceImpl implements ArticleService {
         return articleDAO.countSearchedArticles(searchCriteria);
     }
     
+    
+    
 }

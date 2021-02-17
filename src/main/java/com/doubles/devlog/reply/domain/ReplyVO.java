@@ -2,6 +2,8 @@ package com.doubles.devlog.reply.domain;
 
 import java.util.Date;
 
+import com.doubles.devlog.user.domain.UserVO;
+
 public class ReplyVO {
 
 	private Integer replyNo;
@@ -10,6 +12,8 @@ public class ReplyVO {
 	private String replyWriter;
 	private Date regDate;
 	private Date updateDate;
+	
+	private UserVO userVO;
 	
 	public Integer getReplyNo() {
 		return replyNo;
@@ -48,12 +52,18 @@ public class ReplyVO {
 		this.updateDate = updateDate;
 	}
 	
+	public UserVO getUserVO() {
+		return userVO;
+	}
+	public void setUserVO(UserVO userVO) {
+		this.userVO = userVO;
+	}
+	
 	@Override
 	public String toString() {
 		return "ReplyVO [replyNo=" + replyNo + ", ArticleNo=" + ArticleNo + ", replyText=" + replyText
-				+ ", replyWriter=" + replyWriter + ", regDate=" + regDate + ", updateDate=" + updateDate + "]";
+				+ ", replyWriter=" + replyWriter + ", regDate=" + regDate + ", updateDate=" + updateDate + ", userVO="
+				+ userVO + "]";
 	}
-	
-	
 
 }
