@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.doubles.devlog.article.domain.ArticleVO;
@@ -45,9 +46,11 @@ public class ArticleServiceImpl implements ArticleService {
             articleFileDAO.addFile(articleFileVO);
         }
     }
-
+    
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     @Override
     public ArticleVO read(Integer articleNo) throws Exception {
+    	articleDAO.updateViewCnt(articleNo);
         return articleDAO.read(articleNo);
     }
 

@@ -127,7 +127,8 @@
         writer,
         reg_date,
         view_cnt,
-        file_cnt
+        file_cnt,
+        reply_cnt
     FROM tbl_article
     WHERE article_no > 0
     ]]>
@@ -201,6 +202,7 @@
 		<result property="regDate" column="reg_date" />
 		<result property="viewCnt" column="view_cnt" />
 		<result property="fileCnt" column="file_cnt" />
+		<result property="replyCnt" column="reply_cnt" />
 	</resultMap>
 
 </mapper>

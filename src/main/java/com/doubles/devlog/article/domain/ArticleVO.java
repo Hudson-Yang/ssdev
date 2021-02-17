@@ -11,6 +11,7 @@ public class ArticleVO {
     private String writer;
     private Date regDate;
     private int viewCnt;
+    private int replyCnt;
     
     private String[] files;
     private int fileCnt;
@@ -65,12 +66,18 @@ public class ArticleVO {
 	public void setFileCnt(int fileCnt) {
 		this.fileCnt = fileCnt;
 	}
+	public int getReplyCnt() {
+		return replyCnt;
+	}
+	public void setReplyCnt(int replyCnt) {
+		this.replyCnt = replyCnt;
+	}
 	
 	@Override
 	public String toString() {
 		return "ArticleVO [articleNo=" + articleNo + ", title=" + title + ", content=" + content + ", writer=" + writer
-				+ ", regDate=" + regDate + ", viewCnt=" + viewCnt + ", files=" + Arrays.toString(files) + ", fileCnt="
-				+ fileCnt + "]";
+				+ ", regDate=" + regDate + ", viewCnt=" + viewCnt + ", replyCnt=" + replyCnt + ", files="
+				+ Arrays.toString(files) + ", fileCnt=" + fileCnt + "]";
 	}
 
 }

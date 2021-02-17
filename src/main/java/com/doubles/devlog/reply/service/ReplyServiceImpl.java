@@ -39,7 +39,7 @@ public class ReplyServiceImpl implements ReplyService {
     public void modifyReply(ReplyVO replyVO) throws Exception {
         replyDAO.update(replyVO);
     }
-
+    
     @Transactional
     @Override
     public void removeReply(Integer replyNo) throws Exception {

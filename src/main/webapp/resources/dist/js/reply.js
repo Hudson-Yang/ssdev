@@ -27,11 +27,8 @@ Handlebars.registerHelper("prettifyDate", function (timeValue) {
 
 //댓글 목록 함수
 function getReplies(repliesUri) {
-	console.log("replys.js에서 repliesUri : "+repliesUri); // 로그 나중에 지워야한다 
     $.getJSON(repliesUri, function (data) {
-    	console.log("replys.js에서 data : "+data); // 로그
         printReplyCount(data.pageMaker.totalCount);
-        console.log("replys.js에서 data.pageMaker.totalCount. : "+data.pageMaker.totalCount); // 로그
         printReplies(data.replies, $(".repliesDiv"), $("#replyTemplate"));
         printReplyPaging(data.pageMaker, $(".pagination"));
     });
