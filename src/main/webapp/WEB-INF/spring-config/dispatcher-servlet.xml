@@ -55,9 +55,9 @@
 			<ref bean="loginInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>
-			<mvc:mapping path="/article/paging/search/write" />
-			<mvc:mapping path="/article/paging/search/modify" />
-			<mvc:mapping path="/article/paging/search/remove" />
+			<mvc:mapping path="/article/write" />
+			<mvc:mapping path="/article/modify" />
+			<mvc:mapping path="/article/remove" />
 			<mvc:mapping path="/user/info" />
 			<ref bean="authInterceptor" />
 		</mvc:interceptor>
