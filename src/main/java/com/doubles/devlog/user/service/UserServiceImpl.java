@@ -1,5 +1,7 @@
 package com.doubles.devlog.user.service;
 
+import java.util.Date;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -27,6 +29,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserVO login(LoginDTO loginDTO) throws Exception {
         return userDAO.login(loginDTO);
+    }
+    
+    @Override
+    public void keepLogin(String userId, String sessionId, Date sessionLimit) throws Exception {
+        userDAO.keepLogin(userId, sessionId, sessionLimit);
+    }
+
+    @Override
+    public UserVO checkLoginBefore(String value) throws Exception {
+        return userDAO.checkUserWithSessionKey(value);
     }
     
 }
