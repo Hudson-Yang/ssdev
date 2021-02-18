@@ -55,16 +55,13 @@
 						</ul></li>
 				</c:if>
 				<c:if test="${empty login}">
-					<li class="dropdown user user-menu"><a href="#"
-						class="dropdown-toggle" data-toggle="dropdown"> <img
-							src="${path}/user/default-user.png" class="user-image"
-							alt="User Image"> <span class="hidden-xs">회원가입 또는
-								로그인</span>
+					<li class="dropdown user user-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+						<img src="/dist/img/default-user.png" class="user-image" alt="User Image"/> 
+							<span class="hidden-xs">회원가입 또는 로그인</span>
 					</a>
 						<ul class="dropdown-menu">
-							<li class="user-header"><img
-								src="/dist/img/default-user.png" class="img-circle"
-								alt="User Image">
+							<li class="user-header">
+								<img src="/dist/img/default-user.png" class="img-circle" alt="User Image"/>
 								<p>
 									<b>회원가입 또는 로그인해주세요</b> <small></small>
 								</p></li>

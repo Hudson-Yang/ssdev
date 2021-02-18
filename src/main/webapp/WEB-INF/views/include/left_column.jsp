@@ -8,7 +8,7 @@
 		<div class="user-panel">
 			<c:if test="${empty login}">
 				<div class="pull-left image">
-					<img src="${path}/user/default-user.png" class="img-circle"
+					<img src="/dist/img/default-user.png" class="img-circle"
 						alt="User Image">
 				</div>
 				<div class="pull-left info">
