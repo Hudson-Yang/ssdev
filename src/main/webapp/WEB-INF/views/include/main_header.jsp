@@ -19,17 +19,17 @@
 				<c:if test="${not empty login}">
 					<li class="dropdown user user-menu"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"> <img
-							src="/${login.userImg}" class="user-image" alt="User Image">
+							src="${login.userImg}" class="user-image" alt="User Image">
 							<span class="hidden-xs">${login.userName}</span>
 					</a>
 						<ul class="dropdown-menu">
-							<li class="user-header"><img src="/${login.userImg}"
+							<li class="user-header"><img src="${login.userImg}"
 								class="img-circle" alt="User Image">
 								<p>${login.userName}
 									<small> 가입일자 : <fmt:formatDate value="${login.userJoinDate}" pattern="yyyy-MM-dd" />
 									</small>
 								</p></li>
-							<li class="user-body">
+							<!-- <li class="user-body">
 								<div class="row">
 									<div class="col-xs-4 text-center">
 										<a href="#">게시글</a>
@@ -41,12 +41,12 @@
 										<a href="#">북마크</a>
 									</div>
 								</div>
-							</li>
+							</li> -->
 							<li class="user-footer">
-								<div class="pull-left">
+								<%-- <div class="pull-left">
 									<a href="${path}/user/info" class="btn btn-default btn-flat"><i
 										class="fa fa-info-circle"></i><b> 내 프로필</b></a>
-								</div>
+								</div> --%>
 								<div class="pull-right">
 									<a href="${path}/user/logout" class="btn btn-default btn-flat"><i
 										class="glyphicon glyphicon-log-out"></i><b> 로그아웃</b></a>

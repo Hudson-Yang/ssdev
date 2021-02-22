@@ -36,7 +36,7 @@
    							 				${article.title}</a>
    							 			<span class="badge bg-teal"><i class="fa fa-comment-o"></i> + ${article.replyCnt}</span>
   									</td>
-									<td>${article.writer}</td>
+									<td>${article.writer} ${article.writer}</td>
 									<td><fmt:formatDate value="${article.regDate}" pattern="yyyy-MM-dd a HH:mm" /></td>
 									<td><span class="badge bg-red">${article.viewCnt}</span></td>
 								</tr>

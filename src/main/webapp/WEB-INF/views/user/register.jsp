@@ -15,7 +15,7 @@
 
         <form action="${path}/user/register" method="post">
             <div class="form-group has-feedback">
-                <input type="text" name="userId" class="form-control" placeholder="아아디">
+                <input type="text" name="userId" class="form-control" placeholder="아이디">
                 <span class="glyphicon glyphicon-exclamation-sign form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">

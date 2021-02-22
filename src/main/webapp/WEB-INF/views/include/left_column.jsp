@@ -1,4 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java"%>
+<script>
+	var a = ${login.userImg};
+	alert(a);
+</script>
 <aside class="main-sidebar">
 
 	<!-- sidebar: style can be found in sidebar.less -->
@@ -19,7 +23,7 @@
 			</c:if>
 			<c:if test="${not empty login}">
 				<div class="pull-left image">
-					<img src="/${login.userImg}" class="img-circle" alt="User Image">
+					<img src="${login.userImg}" class="img-circle" alt="User Image">
 				</div>
 				<div class="pull-left info">
 					<p>${login.userName}</p>
