@@ -18,7 +18,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                메인페이지
+                반갑습니다!
             </h1>
             <ol class="breadcrumb">
                 <li><a href="${path}/"><i class="fa fa-dashboard"></i> home</a></li>
@@ -27,8 +27,9 @@
 
         <!-- Main content -->
         <section class="content container-fluid">
-
-            <p>메인페이지입니다....</p>
+        
+			<p>2021.02.20 - 홈페이지 오픈 </p>
+            <p>2021.02.24 - 회원가입 페이지 오타 수정 및 도메인 작업 </p>
 
         </section>
         <!-- /.content -->
