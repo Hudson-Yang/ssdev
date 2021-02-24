@@ -5,8 +5,8 @@
 
 	<%-- Logo --%>
 	<a href="/" class="logo"> <%-- mini logo for sidebar mini 50x50 pixels --%>
-		<span class="logo-mini"><b>H</b>S</span> <%-- logo for regular state and mobile devices --%>
-		<span class="logo-lg"><b>Hong</b> Seung</span>
+		<span class="logo-mini"><b>홍</b>갤</span> <%-- logo for regular state and mobile devices --%>
+		<span class="logo-lg"><b>홍스</b> 갤러리</span>
 	</a>
 
 	<%-- Header Navbar --%>
