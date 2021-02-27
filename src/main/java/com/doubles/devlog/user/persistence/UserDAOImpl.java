@@ -52,4 +52,10 @@ public class UserDAOImpl implements UserDAO {
     public UserVO checkUserWithSessionKey(String value) throws Exception {
         return sqlSession.selectOne(NAMESPACE + ".checkUserWithSessionKey", value);
     }
+    
+    // 글쓴이와 아이디 비교하여 찾기 
+    @Override
+    public UserVO findUserImg(String userId) throws Exception{
+    	return sqlSession.selectOne(NAMESPACE + ".findUserImg", userId);
+    }
 }

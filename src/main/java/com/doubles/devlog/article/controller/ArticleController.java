@@ -15,9 +15,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.doubles.devlog.article.domain.ArticleVO;
 import com.doubles.devlog.article.service.ArticleService;
-import com.doubles.devlog.commons.paging.Criteria;
 import com.doubles.devlog.commons.paging.PageMaker;
 import com.doubles.devlog.commons.paging.SearchCriteria;
+import com.doubles.devlog.user.service.UserService;
 
 @Controller
 @RequestMapping("/article")
@@ -26,10 +26,12 @@ public class ArticleController {
     private static final Logger logger = LoggerFactory.getLogger(ArticleController.class);
 
     private final ArticleService articleService;
+    private final UserService userService;
 
     @Inject
-    public ArticleController(ArticleService articleService) {
+    public ArticleController(ArticleService articleService, UserService userService) {
         this.articleService = articleService;
+        this.userService = userService;
     }
     
     // 등록 페이지 이동
@@ -74,7 +76,9 @@ public class ArticleController {
 
         logger.info("read ...");
         model.addAttribute("article", articleService.read(articleNo));
-
+        String userId = articleService.read(articleNo).getWriter(); 
+        model.addAttribute("writerImg", userService.findUserImg(userId)); // article.writer == user.userId -> 해당하는 user.userId의 user.userImg 가져오기  
+        
         return "/article/read";
     }
 

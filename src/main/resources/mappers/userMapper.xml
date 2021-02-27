@@ -14,7 +14,6 @@
 		<result property="userLoginDate" column="user_login_date" />
 		<result property="userSignature" column="user_signature" />
 		<result property="userImg" column="user_img" />
-		<result property="userPoint" column="user_point" />
 	</resultMap>
 
 	<insert id="register">
@@ -50,6 +49,10 @@
         	*
     	FROM tbl_user
     	WHERE session_key = #{value}
+	</select>
+	
+	<select id="findUserImg" resultMap="userVOResultMap">
+		SELECT user_img FROM tbl_user WHERE user_id = #{userId}
 	</select>
 
 </mapper>

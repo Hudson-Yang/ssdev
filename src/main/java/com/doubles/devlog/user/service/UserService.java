@@ -16,4 +16,6 @@ public interface UserService {
 
     UserVO checkLoginBefore(String value) throws Exception;
     
+    UserVO findUserImg(String userId) throws Exception;
+    
 }

@@ -12,7 +12,6 @@ public class UserVO {
     private Date userLoginDate;
     private String userSignature;
     private String userImg;
-    private int userPoint;
     
 	public String getUserId() {
 		return userId;
@@ -62,19 +61,15 @@ public class UserVO {
 	public void setUserImg(String userImg) {
 		this.userImg = userImg;
 	}
-	public int getUserPoint() {
-		return userPoint;
-	}
-	public void setUserPoint(int userPoint) {
-		this.userPoint = userPoint;
-	}
 	
 	@Override
 	public String toString() {
 		return "UserVO [userId=" + userId + ", userPw=" + userPw + ", userName=" + userName + ", userEmail=" + userEmail
 				+ ", userJoinDate=" + userJoinDate + ", userLoginDate=" + userLoginDate + ", userSignature="
-				+ userSignature + ", userImg=" + userImg + ", userPoint=" + userPoint + "]";
+				+ userSignature + ", userImg=" + userImg + "]";
 	}
+	
+	
     
     
 

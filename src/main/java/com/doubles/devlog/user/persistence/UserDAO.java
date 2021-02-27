@@ -19,4 +19,6 @@ public interface UserDAO {
     // 세션키 검증
     UserVO checkUserWithSessionKey(String value) throws Exception;
     
+    // 글쓴이와 아이디 비교하여 프로필사진 찾기 
+    UserVO findUserImg(String userId) throws Exception;
 }

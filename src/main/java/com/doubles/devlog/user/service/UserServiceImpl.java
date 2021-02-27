@@ -41,4 +41,10 @@ public class UserServiceImpl implements UserService {
         return userDAO.checkUserWithSessionKey(value);
     }
     
+    // 게시글 작성자와 유저 검색
+    @Override
+    public UserVO findUserImg(String userId) throws Exception{
+    	return userDAO.findUserImg(userId);
+    }
+    
 }

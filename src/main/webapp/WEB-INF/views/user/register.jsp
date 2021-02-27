@@ -6,7 +6,7 @@
 <div class="register-box">
     <div class="register-logo">
         <a href="${path}/">
-            <b>HongSeung</b>&nbsp Yang
+            <b>홍스</b>&nbsp 갤러러
         </a>
     </div>
 

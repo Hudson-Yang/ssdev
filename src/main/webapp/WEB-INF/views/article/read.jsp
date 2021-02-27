@@ -27,7 +27,7 @@
 				<div class="box-footer">
 					<div class="user-block">
 						<img class="img-circle img-bordered-sm"
-							src="${login.userImg}" alt="user image"> <span
+							src="${writerImg.userImg}" alt="user image"> <span
 							class="username"> <a href="#">${article.writer}</a>
 						</span> <span class="description"><fmt:formatDate
 								pattern="yyyy-MM-dd a HH:mm" value="${article.regDate}" /></span>
