@@ -26,5 +26,7 @@ public interface ArticleService {
     
     List<ArticleVO> listSearch(SearchCriteria searchCriteria) throws Exception;
 
-    int countSearchedArticles(SearchCriteria searchCriteria) throws Exception;    
+    int countSearchedArticles(SearchCriteria searchCriteria) throws Exception;
+    
+    List<ArticleVO> latestArticles() throws Exception;
 }

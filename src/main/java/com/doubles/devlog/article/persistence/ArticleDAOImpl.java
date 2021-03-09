@@ -95,4 +95,14 @@ public class ArticleDAOImpl implements ArticleDAO {
     public void updateViewCnt(Integer articleNo) throws Exception {
         sqlSession.update(NAMESPACE + ".updateViewCnt", articleNo);
     }
+    
+    @Override
+    public List<ArticleVO> latestArticles() throws Exception {
+    	return sqlSession.selectList(NAMESPACE + ".latestArticles");
+    }
+    
+    
+    
+    
+    
 }

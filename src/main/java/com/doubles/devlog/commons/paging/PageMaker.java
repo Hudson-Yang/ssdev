@@ -3,10 +3,15 @@ package com.doubles.devlog.commons.paging;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.doubles.devlog.article.controller.ArticleController;
+
 public class PageMaker {
+	
 	private int totalCount;
 	private int startPage;
 	private int endPage;
@@ -33,7 +38,7 @@ public class PageMaker {
 		startPage = (endPage - displayPageNum) + 1;
 
 		int tempEndPage = (int) (Math.ceil(totalCount / (double) criteria.getPerPageNum()));
-
+		
 		if (endPage > tempEndPage) {
 			endPage = tempEndPage;
 		}
@@ -41,7 +46,7 @@ public class PageMaker {
 		prev = startPage != 1;
 
 		next = endPage * criteria.getPerPageNum() >= totalCount ? false : true;
-
+		
 	}
 	
 	public String makeQuery(int page) {

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.doubles.devlog.HomeController;
+import com.doubles.devlog.home.controller.HomeController;
 import com.doubles.devlog.tutorial.vo.ProductVO;
 
 @Controller

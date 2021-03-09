@@ -99,6 +99,11 @@ public class ArticleServiceImpl implements ArticleService {
         return articleDAO.countSearchedArticles(searchCriteria);
     }
     
+    @Override
+    public List<ArticleVO> latestArticles() throws Exception{
+    	return articleDAO.latestArticles();
+    }
+    
     
     
 }

@@ -1,8 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java"%>
-<script>
-	var a = ${login.userImg};
-	alert(a);
-</script>
 <aside class="main-sidebar">
 
 	<!-- sidebar: style can be found in sidebar.less -->

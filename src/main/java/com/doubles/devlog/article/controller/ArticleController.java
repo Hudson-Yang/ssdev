@@ -89,6 +89,7 @@ public class ArticleController {
         logger.info("modifyGet ...");
         logger.info(searchCriteria.toString());
         model.addAttribute("article", articleService.read(articleNo));
+        model.addAttribute("test","이건 잘 넘어오는가?");
 
         return "/article/modify";
     }

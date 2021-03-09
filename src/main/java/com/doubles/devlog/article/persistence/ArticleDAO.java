@@ -30,5 +30,7 @@ public interface ArticleDAO {
     void updateReplyCnt(Integer articleNo, int amount) throws Exception;
 
     void updateViewCnt(Integer articleNo) throws Exception;
+    
+    List<ArticleVO> latestArticles() throws Exception;
 
 }
